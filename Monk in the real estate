@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[10005];
+
+int main()
+{
+    int t,e,x,y,i,count;
+    cin>>t;
+    while(t--)
+    {
+        for(i=0;i<=10005;i++)
+        a[i]=0;
+        count=0;
+        cin>>e;
+        while(e--)
+        {
+            cin>>x>>y;
+            a[x]=1;
+            a[y]=1;
+            
+        }
+        for(i=1;i<=10000;i++)
+        {
+            if(a[i]==1)
+            count++;
+        }
+        cout<<count<<endl;
+
+    }
+    
+    return 0;
+}
