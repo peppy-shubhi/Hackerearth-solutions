@@ -1,0 +1,53 @@
+ #include<bits/stdc++.h>
+using namespace std;
+int visited[100005];
+int seen[100005];
+int jump[100005];
+vector<int>adj[100005];
+int dfs(int v)
+{
+	unsigned int i;
+	//cout<<v<<" ";
+	visited[v]=1;
+	
+	
+		for(i=0;i<adj[v].size();i++)
+		{
+			if(visited[adj[v][i]]==0)
+			dfs(adj[v][i]);
+		}
+		
+	
+	return 0;
+}
+int main()
+{
+    unsigned int n,e,a,b,i,j,count=0,x,z;
+    cin>>n>>e;
+    for(i=0;i<e;i++)
+    {
+        cin>>a>>b;
+        adj[a].push_back(b);
+         adj[b].push_back(a);
+    }
+    cin>>x;
+    adj[x].clear();
+    visited[x]=1;
+    if(x==0)
+    dfs(1);
+    else dfs(0);
+    
+    
+    
+    for(i=0;i<n;i++)
+    {
+        if(visited[i]==0)
+        {
+            count=1;
+            break;
+        }
+    }
+    if(count==0)
+    cout<<"Connected"<<endl;
+    else cout<<"Not Connected"<<endl;
+}
