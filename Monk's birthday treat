@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> adj[1005];
+int visited[10000];
+void init()
+{
+    int i;
+    for(i=0;i<10005;i++)
+    visited[i]=0;
+}
+void dfs(int v)
+{
+    unsigned int i;
+    visited[v]=1;
+   // cout<<"**"<<v<<endl;
+    for(i=0;i<adj[v].size();i++)
+    {
+        if(visited[adj[v][i]]==0)
+        dfs(adj[v][i]);
+        
+    }
+}
+int main()
+{
+    int n,d,i,a,b,arr[10005],count,j;
+    cin>>n>>d;
+    while(d--)
+    {
+        cin>>a>>b;
+        
+        adj[a].push_back(b);
+        
+        
+    }
+    for(i=1;i<=n;i++)
+    {
+        // cout<<"***!"<<endl;
+        
+        count=0;
+        init();
+        dfs(i);
+        for(j=1;j<=n;j++)
+        {
+            if(visited[j]==1)
+            count++;
+        }
+        arr[i]=count;
+        
+        
+    }
+    sort(arr+1,arr+n+1);
+    cout<<arr[1]<<endl;
+    return 0;
+}
