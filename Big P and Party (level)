@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+int visited[1005],level[1005];
+queue<int>q;
+vector<int> adj[1005];
+void bfs(int v)
+{
+    unsigned int i,z;
+    q.push(z);
+    level[z]=0;
+    while(!q.empty())
+    {
+        z=q.front();
+        q.pop();
+        for(i=0;i<adj[z].size();i++)
+        {
+            if(visited[adj[z][i]]==0)
+            {
+                q.push(adj[z][i]);
+                visited[adj[z][i]]=1;
+                level[adj[z][i]]=level[z]+1;
+            }
+        }
+    }
+}
+int main()
+{
+    int a,b,c,d,i;
+    cin>>a>>b;
+    while(b--)
+    {
+        cin>>c>>d;
+        adj[c].push_back(d);
+        adj[d].push_back(c);
+        
+    }
+    for(i=0;i<=1002;i++)
+    level[i]=-1;
+    bfs(0);
+    for(i=0;i<a;i++)
+    {
+        if(visited[i]==0)
+        bfs(i);
+    }
+    for(i=1;i<a;i++)
+    cout<<level[i]<<endl;
+    return 0;
+}
