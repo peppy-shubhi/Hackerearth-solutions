@@ -1,0 +1,42 @@
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+	int n,b[105],i,j,c=0,z,a;
+	queue<int>q;
+	cin>>n;
+	for(i=0;i<n;i++)
+	{
+	cin>>a;
+	q.push(a);
+	
+	}
+	for(i=0;i<n;i++)
+	cin>>b[i];
+	
+	
+	
+	j=0;
+	while(!q.empty())
+	{
+	    if(q.front()==b[j])
+	    {
+	        q.pop();
+	        j++;
+	        c++;
+	        
+	    }
+	    else{
+	        z=q.front();
+	        q.pop();
+	        q.push(z);
+	        c++;
+	        
+	    }
+	}
+	cout<<c;
+}
+
